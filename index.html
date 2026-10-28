@@ -1,0 +1,262 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfólio de Danilo Ramos Clude — Desenvolvedor e criador digital especializado em experiências interativas, design de interfaces e tecnologia." />
+  <meta name="theme-color" content="#000000" />
+  <title>Danilo Ramos Clude — Portfólio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ENTRY SCREEN -->
+  <div id="entry-screen" class="entry-screen" role="main">
+    <div class="scanlines" aria-hidden="true"></div>
+    <div class="noise" aria-hidden="true"></div>
+    <div id="boot-log" class="boot-log">
+      <div class="boot-line" id="bl-1">SYSTEM INIT...</div>
+      <div class="boot-line" id="bl-2">LOADING CORE MODULES</div>
+      <div class="boot-line" id="bl-3">RENDERING ENGINE READY</div>
+      <div class="boot-line" id="bl-4">PORTFOLIO DATA LOADED</div>
+      <div class="boot-line" id="bl-5">ACCESS GRANTED</div>
+    </div>
+    <div id="entry-content" class="entry-content">
+      <span class="corner corner--tl" aria-hidden="true"></span>
+      <span class="corner corner--tr" aria-hidden="true"></span>
+      <span class="corner corner--bl" aria-hidden="true"></span>
+      <span class="corner corner--br" aria-hidden="true"></span>
+      <div class="entry-badge" aria-hidden="true">
+        <span class="badge-dot"></span>
+        <span class="badge-text">DRC — SYSTEM ACTIVE</span>
+      </div>
+      <h1 class="entry-title" id="entry-title">
+        <span class="title-word">ACESSE</span>
+        <span class="title-word">MEU</span>
+        <span class="title-word title-word--accent">PORTFÓLIO</span>
+      </h1>
+      <p class="entry-byline" id="entry-byline">BY DANILO RAMOS CLUDE</p>
+      <button id="entry-btn" class="entry-btn" aria-label="Entrar no portfólio">
+        <span class="btn-inner">
+          <span class="btn-text">ENTRAR</span>
+          <span class="btn-arrow" aria-hidden="true">&#8594;</span>
+        </span>
+        <span class="btn-track" aria-hidden="true"></span>
+      </button>
+      <div class="entry-hint" aria-hidden="true">
+        <span class="hint-line"></span>
+        <span class="hint-text">CLIQUE PARA ACESSAR</span>
+        <span class="hint-line"></span>
+      </div>
+    </div>
+    <div class="entry-statusbar" aria-hidden="true">
+      <span>DRC.PORTFOLIO / V1.0</span>
+      <span class="statusbar-mid">&#9632; &#9632; &#9632;</span>
+      <span id="status-clock">00:00:00</span>
+    </div>
+  </div>
+
+  <!-- TRANSITION OVERLAY -->
+  <div id="transition-overlay" class="transition-overlay" aria-hidden="true">
+    <div class="transition-grid"></div>
+  </div>
+
+  <!-- MAIN PORTFOLIO -->
+  <div id="portfolio" class="portfolio hidden">
+
+    <!-- Navigation -->
+    <nav id="main-nav" class="main-nav" aria-label="Navegação principal">
+      <div class="nav-brand">
+        <button id="nav-home" class="nav-logo-btn" aria-label="Ir para galeria">DANILO<br/><span>RAMOS CLUDE</span></button>
+      </div>
+      <ul class="nav-links">
+        <li><button class="nav-link active" data-target="gallery" id="nav-projects">PROJETOS</button></li>
+        <li><button class="nav-link" data-target="about" id="nav-about">SOBRE</button></li>
+        <li><button class="nav-link" data-target="index-view" id="nav-index">ÍNDICE</button></li>
+        <li><button class="nav-link" data-target="contact" id="nav-contact">CONTATO</button></li>
+      </ul>
+      <div class="nav-status" aria-hidden="true">
+        <span class="pulse-dot"></span>
+        <span>ONLINE</span>
+      </div>
+    </nav>
+
+    <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Abrir menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <div id="mobile-nav" class="mobile-nav hidden-mobile">
+      <button class="mobile-nav-link" data-target="gallery">PROJETOS</button>
+      <button class="mobile-nav-link" data-target="about">SOBRE</button>
+      <button class="mobile-nav-link" data-target="index-view">ÍNDICE</button>
+      <button class="mobile-nav-link" data-target="contact">CONTATO</button>
+    </div>
+
+    <!-- GALLERY VIEW -->
+    <section id="gallery" class="view view--gallery active-view" aria-label="Galeria 3D de projetos">
+      <canvas id="three-canvas" aria-hidden="true"></canvas>
+      <div class="gallery-ui" aria-hidden="true">
+        <div class="gallery-counter">
+          <span id="current-project">01</span><span class="counter-sep">/</span><span id="total-projects">06</span>
+        </div>
+        <div class="gallery-scroll-hint">
+          <span>SCROLL OU SETAS</span>
+          <div class="scroll-arrows">
+            <button id="gallery-prev" class="gallery-arrow" aria-label="Projeto anterior">&#8592;</button>
+            <button id="gallery-next" class="gallery-arrow" aria-label="Próximo projeto">&#8594;</button>
+          </div>
+        </div>
+      </div>
+      <div id="project-title-overlay" class="project-title-overlay">
+        <div class="pto-number" id="pto-number">01</div>
+        <div class="pto-name" id="pto-name">Projeto</div>
+        <div class="pto-category" id="pto-category">Categoria</div>
+      </div>
+      <div class="click-hint" id="click-hint">CLIQUE PARA DETALHES</div>
+    </section>
+
+    <!-- PROJECT DETAIL VIEW -->
+    <section id="project-detail" class="view view--detail" aria-label="Detalhes do projeto" aria-hidden="true">
+      <button id="close-detail" class="close-btn" aria-label="Voltar à galeria">&#8592; GALERIA</button>
+      <div class="detail-content">
+        <div class="detail-header">
+          <div class="detail-meta">
+            <span id="detail-number" class="detail-number">01</span>
+            <span id="detail-category" class="detail-cat">Categoria</span>
+          </div>
+          <h2 id="detail-title" class="detail-title">Título</h2>
+        </div>
+        <div class="detail-body">
+          <div class="detail-image-wrap">
+            <img id="detail-img" class="detail-img" src="" alt="" loading="lazy" />
+          </div>
+          <div class="detail-info">
+            <div class="detail-block">
+              <h3 class="detail-block-title">SOBRE O PROJETO</h3>
+              <p id="detail-desc" class="detail-desc"></p>
+            </div>
+            <div class="detail-block">
+              <h3 class="detail-block-title">OBJETIVO</h3>
+              <p id="detail-objective" class="detail-desc"></p>
+            </div>
+            <div class="detail-block">
+              <h3 class="detail-block-title">TECNOLOGIAS</h3>
+              <div id="detail-techs" class="detail-techs"></div>
+            </div>
+            <div class="detail-block">
+              <h3 class="detail-block-title">MINHA PARTICIPAÇÃO</h3>
+              <p id="detail-role" class="detail-desc"></p>
+            </div>
+            <div class="detail-actions">
+              <a id="detail-link" href="#" class="detail-link-btn" target="_blank" rel="noopener noreferrer">VER PROJETO &#8599;</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT VIEW -->
+    <section id="about" class="view view--about" aria-label="Sobre Danilo Ramos Clude" aria-hidden="true">
+      <div class="about-content">
+        <div class="about-left">
+          <div class="about-label">SOBRE MIM</div>
+          <h2 class="about-name">DANILO<br/>RAMOS<br/>CLUDE</h2>
+          <div class="about-divider"></div>
+          <p class="about-tagline">Desenvolvedor web &amp; criador digital</p>
+        </div>
+        <div class="about-right">
+          <div class="about-bio">
+            <p>Sou um profissional apaixonado por criar experiências digitais que unem tecnologia e design de forma intencional. Trabalho com desenvolvimento web focando em interfaces que comunicam, funcionam e impressionam.</p>
+            <p>Cada projeto parte de um problema real e busca uma solução ao mesmo tempo técnica e visualmente coerente. Acredito que a qualidade de um produto digital está nos detalhes, nas interações e na consistência visual.</p>
+            <p class="about-edit-note">[Adicione aqui sua trajetória e experiências profissionais]</p>
+          </div>
+          <div class="about-skills-section">
+            <h3 class="about-skills-title">HABILIDADES</h3>
+            <div class="skills-grid">
+              <div class="skill-group">
+                <div class="skill-group-title">FRONT-END</div>
+                <div class="skill-tags">
+                  <span class="skill-tag">HTML</span>
+                  <span class="skill-tag">CSS</span>
+                  <span class="skill-tag">JavaScript</span>
+                  <span class="skill-tag">React</span>
+                  <span class="skill-tag">Three.js</span>
+                </div>
+              </div>
+              <div class="skill-group">
+                <div class="skill-group-title">DESIGN</div>
+                <div class="skill-tags">
+                  <span class="skill-tag">UI/UX</span>
+                  <span class="skill-tag">Figma</span>
+                  <span class="skill-tag">Identidade Visual</span>
+                </div>
+              </div>
+              <div class="skill-group">
+                <div class="skill-group-title">OUTRAS</div>
+                <div class="skill-tags">
+                  <span class="skill-tag">[Adicionar]</span>
+                  <span class="skill-tag">[Adicionar]</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INDEX VIEW -->
+    <section id="index-view" class="view view--index" aria-label="Índice de projetos" aria-hidden="true">
+      <div class="index-content">
+        <div class="index-header">
+          <h2 class="index-title">ÍNDICE</h2>
+          <span class="index-count">— <span id="index-count">06</span> PROJETOS</span>
+        </div>
+        <ul class="project-index-list" id="project-index-list"></ul>
+      </div>
+    </section>
+
+    <!-- CONTACT VIEW -->
+    <section id="contact" class="view view--contact" aria-label="Contato" aria-hidden="true">
+      <div class="contact-content">
+        <div class="contact-left">
+          <div class="contact-label">CONTATO</div>
+          <h2 class="contact-heading">VAMOS<br/>TRABALHAR<br/>JUNTOS<span class="contact-dot">.</span></h2>
+        </div>
+        <div class="contact-right">
+          <ul class="contact-list">
+            <li class="contact-item">
+              <span class="contact-item-label">E-MAIL</span>
+              <a href="mailto:seu@email.com" class="contact-item-value" id="contact-email">[seu e-mail] <span class="ext-arrow">&#8599;</span></a>
+            </li>
+            <li class="contact-item">
+              <span class="contact-item-label">GITHUB</span>
+              <a href="https://github.com/" target="_blank" rel="noopener noreferrer" class="contact-item-value" id="contact-github">[seu GitHub] <span class="ext-arrow">&#8599;</span></a>
+            </li>
+            <li class="contact-item">
+              <span class="contact-item-label">LINKEDIN</span>
+              <a href="https://linkedin.com/in/" target="_blank" rel="noopener noreferrer" class="contact-item-value" id="contact-linkedin">[seu LinkedIn] <span class="ext-arrow">&#8599;</span></a>
+            </li>
+            <li class="contact-item">
+              <span class="contact-item-label">INSTAGRAM</span>
+              <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer" class="contact-item-value" id="contact-instagram">[seu Instagram] <span class="ext-arrow">&#8599;</span></a>
+            </li>
+          </ul>
+          <div class="contact-footer-note">Disponível para projetos freelance e colaborações.</div>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /portfolio -->
+
+  <!-- Custom cursor -->
+  <div id="cursor" class="cursor" aria-hidden="true">
+    <div class="cursor-dot"></div>
+    <div class="cursor-ring"></div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
